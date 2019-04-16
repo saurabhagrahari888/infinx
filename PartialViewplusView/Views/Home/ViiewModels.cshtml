@@ -1,0 +1,47 @@
+﻿@model PartialViewplusView.Models.multipleclasses
+@{
+    ViewBag.Title = "ViiewModels";
+}
+
+<h2>ViiewModels</h2>
+@using (Html.BeginForm("ViiewModels", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+
+    @Html.LabelFor(m => m.FName)
+    @Html.TextBoxFor(m => m.FName)
+    @Html.Partial("_PartialMiddleName")
+    @Html.Partial("_partialLastName")
+    <input type="button" value="save data" id="btnsbmt" />
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btnsbmt').on("click", function () {
+            Validate();
+            debugger;
+            function Validate() {
+                debugger;
+                var val = document.getElementById('LName').value;
+                if ($("#FName").val() == "") {
+                    alert("Cant be Blank!!!");
+                    return false;
+                }
+                if (!val.match(/^[a-zA-Z]+$/)) {
+                    alert('Only alphabets are allowed');
+                    // $("#btnSubmit").attr("disabled", true);
+                    return false;
+                }
+                else {
+                    debugger;
+                    $("form").submit();
+                }
+
+                return true;
+            }
+        });
+    });
+</script>
+
+
